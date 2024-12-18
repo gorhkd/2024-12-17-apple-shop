@@ -6,11 +6,18 @@
   <link href="/main.css" rel="stylesheet">
 </head>
 <body>
-    <div class="card" th:each="item:${items}">
-      <img src="">
-      <h4 th:text="${item.title}"></h4>
-      <p th:text="${item.price}"></p>
-    </div>
-    <a th:href="@{/list/form}" value="등록하기"></a>
+    <nav class="top_nav">
+        <p class="red">오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류</p>
+    </nav>
+    <div class="background">
+        <a th:href="@{/list/form}" class="button">등록하기</a>
+        <div th:each="item:${items}">
+            <div class="wrap">
+                <img src="">
+                <h4 class="title" th:text="${item.title}">사과</h4>
+                <p class="price" th:text="${item.price}">90000백만원</p>
+            </div>
+        </div>
+</div>
 </body>
 </html>

@@ -19,7 +19,7 @@ public class ItemController {
     private final ItemRepository itemRepository;
     private final ItemService itemService;
 
-    @GetMapping("/")
+    @GetMapping("/main")
     public String list(Model model) {
         List<Item> items = this.itemRepository.findAll();
         model.addAttribute("items", items);
@@ -34,7 +34,7 @@ public class ItemController {
     @PostMapping("/create")
     public String create(@RequestParam String title, @RequestParam Integer price) {
        this.itemService.create(title, price);
-        return "redirect:/list";
+        return "redirect:/list/main";
     }
 
 }
