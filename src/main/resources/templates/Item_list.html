@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+  <link href="/main.css" rel="stylesheet">
 </head>
 <body>
     <div class="card" th:each="item:${items}">
@@ -10,5 +11,6 @@
       <h4 th:text="${item.title}"></h4>
       <p th:text="${item.price}"></p>
     </div>
+    <a th:href="@{/list/form}" value="등록하기"></a>
 </body>
 </html>
