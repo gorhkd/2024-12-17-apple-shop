@@ -3,38 +3,42 @@ package com.apple.__12_17_shop.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RequiredArgsConstructor
-@RequestMapping("/list")
+@RequestMapping("/ItemShop")
 @Controller
 public class ItemController {
 
-    private final ItemRepository itemRepository;
     private final ItemService itemService;
 
     @GetMapping("/main")
     public String list(Model model) {
-        List<Item> items = this.itemRepository.findAll();
+        List<Item> items = this.itemService.findAll();
         model.addAttribute("items", items);
         return "Item_list";
     }
 
-    @GetMapping("/form")
+    @GetMapping("/add")
     public String listForm() {
-        return "Item_form";
+        return "Item_add";
     }
 
-    @PostMapping("/create")
-    public String create(@RequestParam String title, @RequestParam Integer price) {
-       this.itemService.create(title, price);
-        return "redirect:/list/main";
+    @PostMapping("/itemAdd")
+    public String create(@ModelAttribute Item item) {
+       this.itemService.create(item);
+        return "redirect:/ItemShop/main";
     }
+
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable Integer id) {
+        Item item = this.itemService.findId(id);
+        model.addAttribute("item", item);
+        return "Item_detail";
+    }
+
 
 }

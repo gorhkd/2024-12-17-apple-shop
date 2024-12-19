@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-  <link href="/main.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-    <nav class="top_nav">
-        <p class="red">오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류오류</p>
-    </nav>
-    <div class="background">
-        <a th:href="@{/list/form}" class="button">등록하기</a>
-        <div th:each="item:${items}">
-            <div class="wrap">
-                <img src="">
-                <h4 class="title" th:text="${item.title}">사과</h4>
-                <p class="price" th:text="${item.price}">90000백만원</p>
-            </div>
-        </div>
-</div>
+  <div th:replace="~{nav.html :: navbar}"></div>
+  <div class="card" th:each="item:${items}">
+        <img src="https://placehold.co/300">
+      <div>
+           <h4><a th:href="@{|/ItemShop/detail/${item.id}|}" th:text="${item.title}"></a></h4>
+           <p th:text="${item.price}"></p>
+       </div>
+  </div>
 </body>
 </html>
