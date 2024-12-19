@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemService itemService;
+    private final ItemRepository itemRepository;
 
     @GetMapping("/main")
     public String list(Model model) {
@@ -36,9 +38,19 @@ public class ItemController {
 
     @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable Integer id) {
-        model.addAttribute("item", this.itemService.findId(id));
-        return "Item_detail";
+
+            Optional<Item> resualt = this.itemRepository.findById(id);
+            if(resualt.isPresent()){
+                model.addAttribute("item", resualt.get());
+                return "Item_detail";
+            } else {
+                return "redirect:/ItemShop/main";
+            }
     }
+
+
+
+
 
 
 }
