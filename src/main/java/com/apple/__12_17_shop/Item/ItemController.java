@@ -35,8 +35,7 @@ public class ItemController {
 
     @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable Integer id) {
-        Item item = this.itemService.findId(id);
-        model.addAttribute("item", item);
+        model.addAttribute("item", this.itemService.findId(id));
         return "Item_detail";
     }
 

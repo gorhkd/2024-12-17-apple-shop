@@ -9,7 +9,7 @@
 
 <div th:replace="~{nav.html :: navbar}"></div>
 
-    <div class="card" th:each="i : ${item}">
+    <div class="detail" th:each="i : ${item}">
       <img src="https://placehold.co/300">
       <h3 th:text="${i.title}"></h3>
       <p th:text="${i.price} + ' 원'"></p>
