@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div th:replace="~{nav.html :: navbar}"></div>
+<form action="/ItemShop/itemAdd" method="POST">
+    <label for="title" ></label>
+    <input type="text" name="title" id="title">
+
+    <label for="price"></label>
+    <input type="number" name="price" id="price">
+    <button type="submit">버튼</button>
+</form>
+</body>
+</html>

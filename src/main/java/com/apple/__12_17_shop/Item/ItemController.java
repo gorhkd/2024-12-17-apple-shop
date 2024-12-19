@@ -24,30 +24,38 @@ public class ItemController {
         return "Item_list";
     }
 
+
     @GetMapping("/add")
     public String listForm() {
         return "Item_add";
     }
 
     @PostMapping("/itemAdd")
-    public String create(@ModelAttribute Item item) {
-
-       this.itemService.create(item);
+    public String create(String title, Integer price) {
+       this.itemService.save(title, price);
         return "redirect:/ItemShop/main";
     }
+
 
     @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable Integer id) {
 
-            Optional<Item> resualt = this.itemRepository.findById(id);
-            if(resualt.isPresent()){
-                model.addAttribute("item", resualt.get());
-                return "Item_detail";
-            } else {
-                return "redirect:/ItemShop/main";
-            }
+        Optional<Item> resualt = this.itemRepository.findById(id);
+        if(resualt.isPresent()){
+            model.addAttribute("item", resualt.get());
+            return "Item_detail";
+        } else {
+            return "redirect:/ItemShop/main";
+        }
     }
 
+
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable Integer id) {
+        Item item = this.itemService.findId(id);
+        model.addAttribute("item", item);
+            return "Item_edit";
+    }
 
 
 
