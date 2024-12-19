@@ -29,6 +29,7 @@ public class ItemController {
 
     @PostMapping("/itemAdd")
     public String create(@ModelAttribute Item item) {
+
        this.itemService.create(item);
         return "redirect:/ItemShop/main";
     }

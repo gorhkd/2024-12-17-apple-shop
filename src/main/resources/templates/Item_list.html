@@ -7,11 +7,13 @@
 </head>
 <body>
   <div th:replace="~{nav.html :: navbar}"></div>
+
   <div class="card" th:each="item:${items}">
         <img src="https://placehold.co/300">
       <div>
-           <h4><a th:href="@{|/ItemShop/detail/${item.id}|}" th:text="${item.title}"></a></h4>
-           <p th:text="${item.price}"></p>
+           <h4 th:text="${item.title}"></h4>
+          <a th:href="@{|/ItemShop/detail/${item.id}|}">링크</a>
+          <p th:text="${item.price}"></p>
        </div>
   </div>
 </body>
