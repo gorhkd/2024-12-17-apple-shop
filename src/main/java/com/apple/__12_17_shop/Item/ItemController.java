@@ -57,6 +57,13 @@ public class ItemController {
             return "Item_edit";
     }
 
+    @PostMapping("/itemEdit")
+    public String itemEdit(Integer id, String title, Integer price) {
+
+        this.itemService.edit(id, title, price);
+        return "redirect:/ItemShop/main";
+    }
+
 
 
 

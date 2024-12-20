@@ -7,12 +7,10 @@
 </head>
 <body>
 <div th:replace="~{nav.html :: navbar}"></div>
-<form action="/ItemShop/itemAdd" method="POST">
-    <label for="title" ></label>
-    <input type="text" name="title" id="title">
-
-    <label for="price"></label>
-    <input type="number" name="price" id="price">
+<form action="/ItemShop/itemEdit" method="POST">
+    <input name="id" th:value="${item.id}" style="display:none">
+    <input name="title" th:value="${item.title}">
+    <input name="price" th:value="${item.price}">
     <button type="submit">버튼</button>
 </form>
 </body>

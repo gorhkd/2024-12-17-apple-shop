@@ -21,6 +21,15 @@ public class ItemService {
         this.itemRepository.save(item);
     }
 
+    public void edit(Integer id, String title, Integer price) {
+        Item item = new Item();
+        item.setId(id);
+        item.setTitle(title);
+        item.setPrice(price);
+        item.setCreateDate(LocalDateTime.now());
+        this.itemRepository.save(item);
+    }
+
     public Item findId(Integer id) {
         Optional<Item> i = this.itemRepository.findById(id);
         if(i.isPresent()){
@@ -34,4 +43,10 @@ public class ItemService {
     public List<Item> findAll() {
        return this.itemRepository.findAll();
     }
+
+
+
+
+
 }
+
